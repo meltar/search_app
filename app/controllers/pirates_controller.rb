@@ -4,7 +4,11 @@ class PiratesController < ApplicationController
   # GET /pirates
   # GET /pirates.json
   def index
-    @pirates = Pirate.all
+		if params[:search]
+			@pirates = Pirate.search(params[:search])
+		else
+			@pirates = Pirate.all
+		end
   end
 
   # GET /pirates/1
